@@ -11,6 +11,11 @@ namespace IssuesAPI
     {
         public IssuesContext(DbContextOptions<IssuesContext> options) : base(options) { }
 
+        public virtual void Save()
+        {
+            base.SaveChanges();
+        }
+
         public DbSet<Issues> Issues { get; set; }
     }
 }

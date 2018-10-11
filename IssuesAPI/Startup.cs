@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using IssuesAPI.Services;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -39,6 +40,7 @@ namespace IssuesAPI
             var connection = @"Server=localhost;Database=IssuesDB;Trusted_Connection=True;ConnectRetryCount=0";
             services.AddDbContext<IssuesContext>
                 (options => options.UseSqlServer(connection));
+            services.AddTransient<IIssuesRepository, IssuesRepository>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
